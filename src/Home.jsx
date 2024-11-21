@@ -5,10 +5,13 @@ import { firebaseConfig } from './firebase';
 import './Shopping.css'; // For styling
 import { useMobile } from './MobileStorage'
 import './main.css'
-// Initialize Firebase
+import homeImage from './assets/homeImage.png'
+import { useNavigate } from 'react-router-dom';
+import BottomNavBar from './BottomNavBar';
 
 
 const Home = () => {
+    const navigate = useNavigate();
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const { mobileNumber } = useMobile()
@@ -106,42 +109,63 @@ const Home = () => {
     };
 
     return (
-        <div style={{ padding: '5px', fontFamily: 'Arial, sans-serif', }}>
-            <h1 style={{ margin: 5 }} >Shopping</h1>
-            {loading ? (
-                <div style={{ textAlign: 'center' }}>Loading...</div>
-            ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-                    {menuItems.map((item) => (
-                        <div style={{ display: 'flex', flexDirection: 'row', border: '1px solid black' }} key={item.id}>
-                            <img style={{ height: 100, width: 100, border: '1px solid black' }} src={item.imageUrl} alt={item.name} />
-                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }} >
-                                <p style={{ margin: 0, fontSize: 16, fontWeight: 40 }} >{item.name}</p>
-                                <p style={{ margin: 0 }} >₹{item.price}</p>
-                                <p style={{ margin: 0 }} >{item.quantity}</p>
-                            </div>
-                            {isInCart(item.id) ? (
-                                <div className="quantity-controls">
-                                    <button onClick={() => updateQuantity(item.id, -1)}>-</button>
-                                    <span>{isInCart(item.id)}</span>
-                                    <button onClick={() => updateQuantity(item.id, 1)}>+</button>
-                                    <button onClick={() => removeItem(item.id)} className="remove-button">
-                                        Remove
-                                    </button>
-                                </div>
-                            ) : (
-                                <button onClick={() => addToCart(item)} className="add-to-cart-button">
-                                    Add to Cart
-                                </button>
-                            )}
-                        </div>
-                    ))}
+        <div>
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    padding: 10,
+                    alignItems: 'center',
+                    gap: 10
+                }}
+            >
+                <img
+                    style={{ height: 30, width: 30 }}
+                    src={homeImage}
+                />
+                <p style={{ fontSize: 20, fontWeight: 'bold', margin: 0 }}>Home</p>
+                <div style={{ width: '80%', alignItems: 'center', justifyContent: 'center' }} >
                 </div>
-            )}
-            <button className="go-to-cart-button" onClick={() => console.log('Navigate to cart')}>
-                Go to Cart
-            </button>
+            </div>
+            <div style={{ padding: '5px', fontFamily: 'Arial, sans-serif', }}>
+                {loading ? (
+                    <div style={{ textAlign: 'center' }}>Loading...</div>
+                ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                        {menuItems.map((item) => (
+                            <div style={{ display: 'flex', flexDirection: 'row', borderWidth: '0.5px', borderColor: 'black', borderStyle: 'solid', backgroundColor: '#f9f9f9', borderRadius: 5, }} key={item.id}>
+                                <img style={{ height: 100, width: 100, borderRadius: 5 }} src={item.imageUrl} alt={item.name} />
+                                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center', justifyContent: 'center' }} >
+                                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }} >
+                                        <p style={{ margin: 0, fontSize: 16, fontWeight: 'bold', color: 'black' }} >{item.name}</p>
+                                        <p style={{ margin: 0, color: 'grey' }} >₹{item.price}</p>
+                                        <p style={{ margin: 0, color: 'grey' }} >{item.measurement}</p>
+                                    </div>
+                                    {isInCart(item.id) ? (
+                                        <div style={{ display: 'flex', flexDirection: 'row', gap: 3 }}>
+                                            <button style={{ height: 30, fontSize: 20, fontWeight: 40, width: 40, backgroundColor: '#ff6347', border: 'none', borderRadius: 5, color: 'white' }} onClick={() => updateQuantity(item.id, -1)}>-</button>
+                                            <span style={{ height: 30, width: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3 }} >{isInCart(item.id)}</span>
+                                            <button style={{ height: 30, fontSize: 20, fontWeight: 40, width: 40, backgroundColor: '#ff6347', border: 'none', borderRadius: 5, color: 'white' }} onClick={() => updateQuantity(item.id, 1)}>+</button>
+                                            <button style={{ height: 30, fontSize: 14, width: '100%', backgroundColor: '#ff6347', border: 'none', borderRadius: 5, color: 'white' }} onClick={() => removeItem(item.id)} >Remove</button>
+                                        </div>
+                                    ) : (
+                                        <button onClick={() => addToCart(item)} style={{ height: 30, width: '80%', backgroundColor: '#ff6347', border: 'none', borderRadius: 5, color: 'white' }}>
+                                            Add to Cart
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+                <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', bottom: 65 }} >
+                    <div onClick={() => navigate('/realSolution/Cart')} style={{ width: '90%', height: 40, backgroundColor: '#ff6347', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 5 }} >Go To Cart</div>
+                </div>
+            </div>
+            <BottomNavBar></BottomNavBar>
         </div>
+
     );
 };
 
