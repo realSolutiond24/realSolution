@@ -22,6 +22,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/realSolution/Cart" element={<Cart />} />
           <Route path="/realSolution/MyOrders" element={<MyOrders />} />
           <Route path="/realSolution/MobileProvider" element={<MobileProvider />} />
+          <Route path="/realSolution/ForgotPassword" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </MobileProvider>
