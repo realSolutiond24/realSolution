@@ -7,6 +7,7 @@ import Login from './Login';
 import Home from './Home.jsx';
 import Cart from './Cart.jsx'
 import MyOrders from './MyOrders.jsx'
+import ForgotPassword from './ForgotPassword.jsx'
 import { MobileProvider } from './MobileStorage.jsx';
 
 createRoot(document.getElementById('root')).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/realSolution/Home" element={<Home />} />
           <Route path="/realSolution/Cart" element={<Cart />} />
           <Route path="/realSolution/MyOrders" element={<MyOrders />} />
+          <Route path="/realSolution/MobileProvider" element={<MobileProvider />} />
         </Routes>
       </BrowserRouter>
     </MobileProvider>

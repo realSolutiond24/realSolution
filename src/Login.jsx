@@ -70,7 +70,7 @@ function Login() {
                     {"Login"}
                 </button>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <a style={{ textDecoration: 'none', color: 'red', fontSize: 15 }} href="#">Forgot Password</a>
+                    <a style={{ textDecoration: 'none', color: 'red', fontSize: 15 }} onClick={navigate('/realSolution/ForgotPassword')}>Forgot Password</a>
                     <a onClick={goToSignUp} style={{ textDecoration: 'none', color: 'black', fontSize: 15 }}>Don't have an account?</a>
                 </div>
             </div>
