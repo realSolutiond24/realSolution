@@ -103,22 +103,22 @@ function App() {
         <input
           type="text"
           placeholder="Name"
-          onChange={(e) => { }}  // Add logic to handle other fields
+          onChange={(e) => setName(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
         <input
           type="password"
           placeholder="Enter Your New Password"
-          onChange={(e) => { }}  // Add logic to handle other fields
+          onChange={(e) => setPassword(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
         <input
           type="text"
           placeholder="Address"
-          onChange={(e) => { }}  // Add logic to handle other fields
+          onChange={(e) => setAddress(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
         <input
           type='email'
           placeholder="Email Id"
-          onChange={(e) => { }}  // Add logic to handle other fields
+          onChange={(e) => setEmailId(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
 
         {confirmationResult && (
