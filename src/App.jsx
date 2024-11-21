@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
 import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
@@ -36,6 +36,18 @@ function App() {
       window.recaptchaVerifier.render();
     }
   };
+
+  useEffect(() => {
+    if (name) {
+      console.log("Name has been updated:", name);
+    }
+  }, [name]);
+
+  useEffect(() => {
+    if (password) {
+      console.log("Password has been updated:", password);
+    }
+  }, [password]);
 
   // Handle user signup (send OTP)
   const handleSignup = async () => {
