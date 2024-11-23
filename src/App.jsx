@@ -63,10 +63,6 @@ function App() {
       alert("Passwords do not match.");
       return;
     }
-    if (name || password || confirmPassword || address || emailId === "") {
-      alert("Please fill all the fields.");
-      return;
-    }
     setupRecaptcha();
     const appVerifier = window.recaptchaVerifier;
 
@@ -122,26 +118,22 @@ function App() {
       <div style={{ width: "80%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 5, }}>
 
         <input
-          required
           type="text"
           placeholder="Mobile Number"
           value={mobileNumber}
           onChange={(e) => setMobile(e.target.value)}  // Update mobile number
           style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
-          required
           type="text"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
-          required
           type="password"
           placeholder="Enter Your New Password"
           onChange={(e) => setPassword(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
-          required
           type="text"
           placeholder="Confirm Your New Password"
           onChange={(e) => setConfirmPassword(e.target.value)}  // Add logic to handle other fields
@@ -152,13 +144,11 @@ function App() {
           onChange={(e) => setReferralCode(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
-          required
           type="text"
           placeholder="Address"
           onChange={(e) => setAddress(e.target.value)}  // Add logic to handle other fields
           style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
-          required
           type='email'
           placeholder="Email Id"
           onChange={(e) => setEmailId(e.target.value)}  // Add logic to handle other fields
