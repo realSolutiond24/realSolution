@@ -134,16 +134,16 @@ const Home = () => {
                 ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                         {menuItems.map((item) => (
-                            <div style={{ display: 'flex', flexDirection: 'row', borderWidth: '0.5px', borderColor: 'black', borderStyle: 'solid', backgroundColor: '#f9f9f9', borderRadius: 5, }} key={item.id}>
+                            <div style={{ display: 'flex', flexDirection: 'row', borderWidth: '0.5px', borderColor: 'black', borderStyle: 'solid', backgroundColor: '#f9f9f9', borderRadius: 5, padding: 7 }} key={item.id}>
                                 <img style={{ height: 100, width: 100, borderRadius: 5 }} src={item.imageUrl} alt={item.name} />
-                                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center', justifyContent: 'center' }} >
-                                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center' }} >
+                                <div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center', justifyContent: 'space-evenly' }} >
+                                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }} >
                                         <p style={{ margin: 0, fontSize: 16, fontWeight: 'bold', color: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >{item.name}</p>
                                         <p style={{ margin: 0, color: 'grey', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >₹{item.price}</p>
                                         <p style={{ margin: 0, color: 'grey', display: 'flex', alignItems: 'center', justifyContent: 'center' }} >{item.measurement}</p>
                                     </div>
                                     {isInCart(item.id) ? (
-                                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'center' }}>
                                             <button style={{ height: 30, fontSize: 20, fontWeight: 40, width: 40, backgroundColor: '#ff6347', border: 'none', borderRadius: 5, color: 'white' }} onClick={() => updateQuantity(item.id, -1)}>-</button>
                                             <span style={{ height: 30, width: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3 }} >{isInCart(item.id)}</span>
                                             <button style={{ height: 30, fontSize: 20, fontWeight: 40, width: 40, backgroundColor: '#ff6347', border: 'none', borderRadius: 5, color: 'white' }} onClick={() => updateQuantity(item.id, 1)}>+</button>

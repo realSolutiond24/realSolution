@@ -47,21 +47,21 @@ function Login() {
 
     return (
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", fontFamily: "Arial, sans-serif" }}>
-            <h1 style={{ fontSize: 24, marginBottom: 15, color: 'black' }}>Login</h1>
-            <div style={{ width: "90%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ width: '78%' }} ><h1 style={{ fontSize: 20, marginBottom: 10, color: 'black', fontWeight: 'lighter' }}>Login</h1></div>
+            <div style={{ width: "80%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 10 }}>
                 <input
                     type="number"
                     placeholder="Mobile Number"
                     value={mobileNumber}
                     onChange={(e) => setMobileNumberState(e.target.value)}
-                    style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }}
+                    style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }}
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }}
+                    style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }}
                 />
                 <button
                     onClick={handleLogin}
@@ -70,8 +70,8 @@ function Login() {
                     {"Login"}
                 </button>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <a style={{ textDecoration: 'none', color: 'red', fontSize: 15 }} onClick={() => { navigate('/realSolution/ForgotPassword') }}>Forgot Password</a>
-                    <a onClick={goToSignUp} style={{ textDecoration: 'none', color: 'black', fontSize: 15 }}>Don't have an account?</a>
+                    <a style={{ textDecoration: 'none', color: 'blue', fontSize: 16 }} onClick={() => { navigate('/realSolution/ForgotPassword') }}>Forgot Password</a>
+                    <a onClick={goToSignUp} style={{ textDecoration: 'none', color: 'black', fontSize: 20 }}>Sign Up</a>
                 </div>
             </div>
         </div>

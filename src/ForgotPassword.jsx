@@ -82,7 +82,7 @@ function ForgotPassword() {
             await updateDoc(userRef, { password: newPassword });
 
             alert("Password has been reset successfully!");
-            navigate('/login');  // Redirect to login page after successful password reset
+            navigate('/realSolution/Login');  // Redirect to login page after successful password reset
         } catch (error) {
             console.error("Error verifying OTP: ", error.message);
             alert("Invalid OTP. Please try again.");

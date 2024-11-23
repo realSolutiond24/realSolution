@@ -20,6 +20,10 @@ function App() {
   const [address, setAddress] = useState('')
   const [emailId, setEmailId] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [referralCode, setReferralCode] = useState('')
+  const [instagramId, setInstagramId] = useState('')
+  const [facebookId, setFacebookId] = useState('')
   // Function to setup reCAPTCHA for phone number verification
   const setupRecaptcha = () => {
     if (!window.recaptchaVerifier) {
@@ -55,6 +59,14 @@ function App() {
       alert("Please enter a valid mobile number.");
       return;
     }
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+    if (name || password || confirmPassword || address || emailId === "") {
+      alert("Please fill all the fields.");
+      return;
+    }
     setupRecaptcha();
     const appVerifier = window.recaptchaVerifier;
 
@@ -86,6 +98,9 @@ function App() {
         address: address,
         emailId: emailId,
         password: password,
+        facebookId: facebookId,
+        instagramId: instagramId,
+        referralCode: referralCode
       });
 
       navigate('/realSolution/Home');  // Redirect to Home page after successful signup
@@ -103,35 +118,61 @@ function App() {
   return (
     <div
       style={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", fontFamily: "Arial, sans-serif", }}>
-      <h1 style={{ fontSize: 24, marginBottom: 15, color: 'black' }}>Sign Up</h1>
-      <div style={{ width: "90%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 10, }}>
+      <div style={{ width: '78%' }} ><h1 style={{ fontSize: 20, marginBottom: 10, color: 'black', fontWeight: 'lighter' }}>Sign Up</h1></div>
+      <div style={{ width: "80%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 5, }}>
 
         <input
+          required
           type="text"
           placeholder="Mobile Number"
           value={mobileNumber}
           onChange={(e) => setMobile(e.target.value)}  // Update mobile number
-          style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
+          required
           type="text"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}  // Add logic to handle other fields
-          style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
+          required
           type="password"
           placeholder="Enter Your New Password"
           onChange={(e) => setPassword(e.target.value)}  // Add logic to handle other fields
-          style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
+          required
+          type="text"
+          placeholder="Confirm Your New Password"
+          onChange={(e) => setConfirmPassword(e.target.value)}  // Add logic to handle other fields
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
+        <input
+          type="text"
+          placeholder="Referral Code (Optional)"
+          onChange={(e) => setReferralCode(e.target.value)}  // Add logic to handle other fields
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
+        <input
+          required
           type="text"
           placeholder="Address"
           onChange={(e) => setAddress(e.target.value)}  // Add logic to handle other fields
-          style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         <input
+          required
           type='email'
           placeholder="Email Id"
           onChange={(e) => setEmailId(e.target.value)}  // Add logic to handle other fields
-          style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
+        <input
+          type="text"
+          placeholder="Instagram Id (Optional)"
+          onChange={(e) => setInstagramId(e.target.value)}  // Add logic to handle other fields
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
+        <input
+          type="text"
+          placeholder="Facebook Id (Optional)"
+          onChange={(e) => setFacebookId(e.target.value)}  // Add logic to handle other fields
+          style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
 
         {confirmationResult && (
           <input
@@ -139,7 +180,7 @@ function App() {
             placeholder="Enter OTP"
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
-            style={{ padding: 10, fontSize: 16, border: "1px solid #555", borderRadius: 7, outlineStyle: 'none', borderWidth: 5, borderColor: 'black' }} />
+            style={{ padding: 10, fontSize: 14, borderRadius: 7, outlineStyle: 'none', borderStyle: 'solid', borderWidth: 3, borderColor: 'black', }} />
         )}
         <button
           onClick={confirmationResult ? verifyOtp : handleSignup}
@@ -147,7 +188,7 @@ function App() {
           {confirmationResult ? "Verify OTP" : "Sign Up / Send OTP"}
         </button>
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end' }} >
-          <a onClick={goToLogin} style={{ textDecoration: 'none', color: 'black', fontSize: 15 }} >Already have an account?</a>
+          <a onClick={goToLogin} style={{ textDecoration: 'none', color: 'black', fontSize: 20 }} >Login</a>
         </div>
       </div>
       <div id="recaptcha-container" style={{ marginTop: 10 }}></div>

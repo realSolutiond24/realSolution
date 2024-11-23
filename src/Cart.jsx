@@ -143,7 +143,7 @@ const Cart = () => {
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
-                                        gap: '10px',
+                                        gap: '5px',
                                     }}
                                 >
                                     <button
